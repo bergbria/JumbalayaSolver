@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordListCreator", "WordListCreator\WordListCreator.csproj", "{97ED4719-5042-419D-A30E-B268464DB6F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumbalayaSolver", "JumbalayaSolver\JumbalayaSolver.csproj", "{67196C2E-D28C-4489-9F0E-57679C11BC24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{97ED4719-5042-419D-A30E-B268464DB6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97ED4719-5042-419D-A30E-B268464DB6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97ED4719-5042-419D-A30E-B268464DB6F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67196C2E-D28C-4489-9F0E-57679C11BC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67196C2E-D28C-4489-9F0E-57679C11BC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67196C2E-D28C-4489-9F0E-57679C11BC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67196C2E-D28C-4489-9F0E-57679C11BC24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

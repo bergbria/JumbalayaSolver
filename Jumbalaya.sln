@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{DDBD07CA-14A6-43ED-854B-CBFF1EC4D34C}"
 	ProjectSection(SolutionItems) = preProject
 		Resources\wordsEn.txt = Resources\wordsEn.txt
+		Resources\wordsEn_filtered.txt = Resources\wordsEn_filtered.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordListCreator", "WordListCreator\WordListCreator.csproj", "{97ED4719-5042-419D-A30E-B268464DB6F9}"

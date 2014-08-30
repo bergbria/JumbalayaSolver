@@ -50,8 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="SimpleWordIndexTest1.cs" />
+    <Compile Include="WordCharacterDataUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jumbalaya.Core\Jumbalaya.Core.csproj">
+      <Project>{467becd5-ef58-4537-898e-d3ee11444c37}</Project>
+      <Name>Jumbalaya.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

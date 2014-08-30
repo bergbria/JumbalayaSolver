@@ -39,7 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="SimpleWordIndex.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileTray.cs" />
+    <Compile Include="WordCharacterData.cs" />
+    <Compile Include="WordIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

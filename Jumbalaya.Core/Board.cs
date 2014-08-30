@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jumbalaya.Core
 {
-    public class Class1
+    public class Board
     {
+        public string[] Words { get; set; }
     }
 }

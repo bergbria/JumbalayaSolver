@@ -50,6 +50,7 @@ namespace Jumbalaya.Core
         private static ISet<WordCharacterData> FindAnagramOptions(string word, TileTray tray)
         {
             var optionAnagrams = new HashSet<WordCharacterData>();
+            optionAnagrams.Add(new WordCharacterData(word));
 
             foreach (var tile in tray.Tiles)
             {
@@ -70,7 +71,7 @@ namespace Jumbalaya.Core
                 optionAnagrams.Add(new WordCharacterData(word + pairText));
             }
 
-            for (int i = 0; i < word.Length - 1; i++)
+            for (int i = 0; i < word.Length; i++)
             {
                 string sansLetter1 = word.Remove(i, 1);
 

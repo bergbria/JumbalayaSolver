@@ -16,6 +16,10 @@ namespace Jumbalaya.Core
 
         public Tile(string text)
         {
+            if (string.IsNullOrEmpty(text) || text.Length > 2)
+            {
+                throw new ArgumentException("Shenanigans! Invalid tile text: " + text);
+            }
             char1 = text[0];
             char2 = text.Length > 1 ? text[1] : (char?) null;
             _text = text;

@@ -51,5 +51,11 @@ namespace Jumbalaya.Core
             }
             return true;
         }
+
+        public override string ToString()
+        {
+            var keyValPairs = CharacterCounts.Select(kvp => kvp.Key + ":" + kvp.Value);
+            return "Count: " + CharacterCounts.Count + "{" + string.Join(", ", keyValPairs) + "}";
+        }
     }
 }

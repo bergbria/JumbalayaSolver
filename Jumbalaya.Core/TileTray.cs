@@ -11,6 +11,12 @@ namespace Jumbalaya.Core
         private string[] _distinctLetterPairs;
         public Tile[] Tiles { get; set; }
 
+        public TileTray(params string[] tiles)
+        {
+            if (tiles == null) throw new ArgumentNullException("tiles");
+            Tiles = tiles.Select(tileText => new Tile(tileText)).ToArray();
+        }
+
         public string[] DistinctTilePairStrings
         {
             get

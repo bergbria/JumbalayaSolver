@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jumbalaya.Core
 {
-    public class WordIndexFactory
+    public static class WordIndexFactory
     {
         public static void FillWordIndex(IWordIndex index, string wordListPath)
         {

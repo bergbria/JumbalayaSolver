@@ -12,7 +12,7 @@ namespace WordListCreator
     class Program
     {
         //don't allow any spaces, punctuation, or uppercase words
-        private static readonly Regex ValidWordLineRegex = new Regex(@"^[a-z]+$");
+        private static readonly Regex ValidWordLineRegex = new Regex(@"^[a-z]{3,20}$");
 
         //Usage <exe name> <input word list> <destination file>
         static void Main(string[] args)

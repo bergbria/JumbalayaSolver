@@ -17,6 +17,11 @@ namespace Jumbalaya.Core
         public SimpleJumabalayaFinder(string wordListPath)
         {
             validWords = new List<string>();
+            InitIndex(wordListPath);
+        }
+
+        private void InitIndex(string wordListPath)
+        {
             foreach (var word in File.ReadLines(wordListPath))
             {
                 if (wordListPath.Length >= minLettersForJumbalaya)
@@ -43,7 +48,7 @@ namespace Jumbalaya.Core
             //find jumbalayas without this row in it
             FindJumbalayas(boardWords, currentWordIndex + 1, inProgressJumbalaya, foundWords);
 
-            //find jumbalayas with each of my letters in it
+            //find jumbalayas with any of my letters in it
             var startWord = boardWords[currentWordIndex];
             foreach (char c in startWord)
             {

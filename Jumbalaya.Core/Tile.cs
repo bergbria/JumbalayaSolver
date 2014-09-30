@@ -41,5 +41,21 @@ namespace Jumbalaya.Core
             }
             return base.Equals(obj);
         }
+
+        protected bool Equals(Tile other)
+        {
+            return string.Equals(_text, other._text) && char2 == other.char2 && char1 == other.char1;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = (_text != null ? _text.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ char2.GetHashCode();
+                hashCode = (hashCode*397) ^ char1.GetHashCode();
+                return hashCode;
+            }
+        }
     }
 }

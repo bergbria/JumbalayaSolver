@@ -44,7 +44,15 @@ namespace Jumbalaya.Core
             }
             //leaving the word intact doesn't count as a move
             wordOptions.Remove(word);
+
+            RemoveMultiCharacterTileViolations(word, wordOptions, tray);
             return wordOptions.ToList();
+        }
+
+        private void RemoveMultiCharacterTileViolations(string originalWord, HashSet<string> wordOptions, TileTray tray)
+        {
+            var multiCharTiles = tray.Tiles.Where(tile => tile.Text.Length > 1);
+
         }
 
         private static ISet<WordCharacterData> FindAnagramOptions(string word, TileTray tray)

@@ -1,51 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Jumbalaya.Core.Test
 {
     public class GenericWordIndexTests<T> where T : IWordIndex
     {
-        private IWordIndex index;
+        private IWordIndex _index;
 
         public void Setup()
         {
-            InstantiateWordIndex();
+            _index = InstantiateWordIndex();
 
             PopulateWordIndex();
         }
 
         private void PopulateWordIndex()
         {
-            index.AddWord("test");
-            index.AddWord("testa");
-            index.AddWord("atest");
-            index.AddWord("testb");
-            index.AddWord("testc");
+            _index.AddWord("test");
+            _index.AddWord("testa");
+            _index.AddWord("atest");
+            _index.AddWord("testb");
+            _index.AddWord("testc");
 
-            index.AddWord("testaa");
-            index.AddWord("atesta");
-            index.AddWord("testaaa");
-            index.AddWord("testbb");
+            _index.AddWord("testaa");
+            _index.AddWord("atesta");
+            _index.AddWord("testaaa");
+            _index.AddWord("testbb");
 
-            index.AddWord("eteste");
+            _index.AddWord("eteste");
         }
 
-        private void InstantiateWordIndex()
+        private IWordIndex InstantiateWordIndex()
         {
             Type wordIndexType = typeof (T);
             ConstructorInfo defaultConstructor = wordIndexType.GetConstructor(Type.EmptyTypes);
-            index = (IWordIndex) defaultConstructor.Invoke(Type.EmptyTypes);
+            return (IWordIndex) defaultConstructor.Invoke(Type.EmptyTypes);
         }
 
         public void TestAdd1()
         {
             TileTray tray = new TileTray("a", "b", "d");
-            var options = index.FindAvailableMoves("test", tray);
+            var options = _index.FindAvailableMoves("test", tray);
 
             Assert.AreEqual(3, options.Count);
             CollectionAssert.Contains(options, "testa");
@@ -56,7 +52,7 @@ namespace Jumbalaya.Core.Test
         public void TestAdd2()
         {
             TileTray tray = new TileTray("a", "a", "b", "d");
-            var options = index.FindAvailableMoves("test", tray);
+            var options = _index.FindAvailableMoves("test", tray);
 
             Assert.AreEqual(5, options.Count);
             CollectionAssert.Contains(options, "testa");
@@ -70,7 +66,7 @@ namespace Jumbalaya.Core.Test
         public void TestRearrange()
         {
             var tray = new TileTray("x");
-            var options = index.FindAvailableMoves("tset", tray);
+            var options = _index.FindAvailableMoves("tset", tray);
 
             Assert.AreEqual(1, options.Count);
             CollectionAssert.Contains(options, "test");
@@ -79,7 +75,7 @@ namespace Jumbalaya.Core.Test
         public void TestSwap1()
         {
             TileTray tray = new TileTray("a", "b", "d");
-            var options = index.FindAvailableMoves("testx", tray);
+            var options = _index.FindAvailableMoves("testx", tray);
 
             Assert.AreEqual(3, options.Count);
             CollectionAssert.Contains(options, "testa");
@@ -90,7 +86,7 @@ namespace Jumbalaya.Core.Test
         public void TestAdd1Swap1()
         {
             TileTray tray = new TileTray("a", "a");
-            var options = index.FindAvailableMoves("testx", tray);
+            var options = _index.FindAvailableMoves("testx", tray);
 
             Assert.AreEqual(4, options.Count);
             CollectionAssert.Contains(options, "testa");
@@ -102,7 +98,7 @@ namespace Jumbalaya.Core.Test
         public void TestSwap2()
         {
             TileTray tray = new TileTray("e", "e");
-            var options = index.FindAvailableMoves("xtestx", tray);
+            var options = _index.FindAvailableMoves("xtestx", tray);
 
             Assert.AreEqual(1, options.Count);
             CollectionAssert.Contains(options, "eteste");
@@ -111,7 +107,7 @@ namespace Jumbalaya.Core.Test
         //verifies that, using a real word list, the index can provide the answers in the jumbalaya instruction book
         public void InstructionBookTest()
         {
-            SimpleWordIndex dexter = new SimpleWordIndex();
+            IWordIndex dexter = InstantiateWordIndex();
             WordIndexFactory.FillWordIndex(dexter, @"..\..\..\Resources\wordsEn_filtered.txt");
 
             TileTray tray = new TileTray("f", "s", "r", "k");
@@ -133,10 +129,10 @@ namespace Jumbalaya.Core.Test
 
         public void TestMultiCharTile()
         {
-            index.AddWord("bat");
-            index.AddWord("tab");
+            _index.AddWord("bat");
+            _index.AddWord("tab");
             TileTray tray = new TileTray("b", "at");
-            var options = index.FindAvailableMoves("", tray);
+            var options = _index.FindAvailableMoves("", tray);
             CollectionAssert.Contains(options, "bat");
             CollectionAssert.DoesNotContain(options, "tab");
         }

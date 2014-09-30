@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="GenericWordIndexTests.cs" />
+    <Compile Include="FancyWordIndexTest1.cs" />
     <Compile Include="SimpleWordIndexTest1.cs" />
     <Compile Include="SimpleJumbalayaFinderTest1.cs" />
     <Compile Include="WordCharacterDataUnitTest.cs" />

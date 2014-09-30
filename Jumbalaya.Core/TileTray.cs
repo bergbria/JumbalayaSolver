@@ -9,6 +9,7 @@ namespace Jumbalaya.Core
     public class TileTray
     {
         private string[] _distinctLetterPairs;
+        private List<LinkedList<char>> _sortedDistinctLetterPairs;
         public Tile[] Tiles { get; set; }
 
         public TileTray(params string[] tiles)
@@ -26,6 +27,24 @@ namespace Jumbalaya.Core
                     _distinctLetterPairs = GenerateDistinctLetterPairs();
                 }
                 return _distinctLetterPairs;
+            }
+        }
+
+        public List<LinkedList<char>> SortedDistinctLetterPairs
+        {
+            get
+            {
+                if (_sortedDistinctLetterPairs == null)
+                {
+                    _sortedDistinctLetterPairs = new List<LinkedList<char>>(this.DistinctTilePairStrings.Length);
+                    foreach (string str in this.DistinctTilePairStrings)
+                    {
+                        var chars = str.ToCharArray();
+                        Array.Sort(chars);
+                        _sortedDistinctLetterPairs.Add(new LinkedList<char>(chars));
+                    }
+                }
+                return _sortedDistinctLetterPairs;
             }
         }
 

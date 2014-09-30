@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jumbalaya.Core
 {
+    [Serializable]
     public class WordCharacterData :IEquatable<WordCharacterData>
     {
         public WordCharacterData(string word)

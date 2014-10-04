@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
+    <Compile Include="SlightlyLessFancyWordIndex.cs" />
     <Compile Include="FancyWordIndex.cs" />
     <Compile Include="IJumbalayaFinder.cs" />
     <Compile Include="SimpleJumabalayaFinder.cs" />

@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SlightlyLessFancyWordIndexTest1.cs" />
     <Compile Include="GenericWordIndexTests.cs" />
     <Compile Include="FancyWordIndexTest1.cs" />
     <Compile Include="SimpleWordIndexTest1.cs" />

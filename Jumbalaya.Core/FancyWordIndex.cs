@@ -34,19 +34,18 @@ namespace Jumbalaya.Core
             return wordOptions.ToList();
         }
 
-        private static string Merge(LinkedListNode<char> startNode, LinkedList<char> charList2)
+        private static string Merge(LinkedList<char> list1, LinkedList<char> list2)
         {
-            LinkedList<char> list = startNode.List;
             List<LinkedListNode<char>> insertedNodes = new List<LinkedListNode<char>>();
 
-            LinkedListNode<char> node1 = startNode;
-            LinkedListNode<char> node2 = charList2.First;
+            LinkedListNode<char> node1 = list1.First;
+            LinkedListNode<char> node2 = list2.First;
 
             while (node1 != null && node2 != null)
             {
                 if (node2.Value < node1.Value)
                 {
-                    var insertedNode = list.AddBefore(node1, node2.Value);
+                    var insertedNode = list1.AddBefore(node1, node2.Value);
                     insertedNodes.Add(insertedNode);
                     node2 = node2.Next;
                 }
@@ -60,20 +59,20 @@ namespace Jumbalaya.Core
             {
                 while (node2 != null)
                 {
-                    insertedNodes.Add(list.AddLast(node2.Value));
+                    insertedNodes.Add(list1.AddLast(node2.Value));
                     node2 = node2.Next;
                 }
             }
 
-            StringBuilder strBuilder = new StringBuilder(list.Count);
-            foreach (char c in list)
+            StringBuilder strBuilder = new StringBuilder(list1.Count);
+            foreach (char c in list1)
             {
                 strBuilder.Append(c);
             }
 
             foreach (var node in insertedNodes)
             {
-                list.Remove(node);
+                list1.Remove(node);
             }
             return strBuilder.ToString();
         }
@@ -92,7 +91,7 @@ namespace Jumbalaya.Core
             foreach (var tile in sortedTiles)
             {
                 //add 1
-                optionAnagrams.Add(Merge(charList.First, tile));
+                optionAnagrams.Add(Merge(charList, tile));
 
                 //swap 1
                 currentNode = charList.First;
@@ -102,7 +101,7 @@ namespace Jumbalaya.Core
                     if (precedingNode == null || precedingNode.Value != currentNode.Value)
                     {
                         charList.Remove(currentNode);
-                        string anagram = Merge(charList.First, tile);
+                        string anagram = Merge(charList, tile);
                         optionAnagrams.Add(anagram);
 
                         if (precedingNode == null)
@@ -124,7 +123,7 @@ namespace Jumbalaya.Core
                 foreach (var pairText in tray.SortedDistinctLetterPairs)
                 {
                     //add 2
-                    optionAnagrams.Add(Merge(charList.First, pairText));
+                    optionAnagrams.Add(Merge(charList, pairText));
                 }
 
                 currentNode = charList.First;
@@ -140,7 +139,7 @@ namespace Jumbalaya.Core
                     foreach (var pairText in tray.SortedDistinctLetterPairs)
                     {
                         //add 1, swap 1 (=remove 1, add 2)
-                        optionAnagrams.Add(Merge(charList.First, pairText));
+                        optionAnagrams.Add(Merge(charList, pairText));
                     }
 
                     while (fancyNode != null)
@@ -149,7 +148,7 @@ namespace Jumbalaya.Core
                         foreach (var pairText in tray.SortedDistinctLetterPairs)
                         {
                             //swap 2
-                            optionAnagrams.Add(Merge(charList.First, pairText));
+                            optionAnagrams.Add(Merge(charList, pairText));
                         }
 
                         if (fancyPrecedingNode == null)

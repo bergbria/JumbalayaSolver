@@ -18,6 +18,24 @@ namespace Jumbalaya.Core
             Tiles = tiles.Select(tileText => new Tile(tileText)).ToArray();
         }
 
+        public string Text
+        {
+            get
+            {
+                if (!Tiles.Any())
+                {
+                    return string.Empty;
+                }
+                return Tiles.Select(t => t.Text).Aggregate((a, b) => a + b);
+            }
+            set
+            {
+                Tiles = value.ToCharArray().Select(c => new Tile(c.ToString())).ToArray();
+                _distinctLetterPairs = null;
+                _sortedDistinctLetterPairs = null;
+            }
+        }
+
         public string[] DistinctTilePairStrings
         {
             get
